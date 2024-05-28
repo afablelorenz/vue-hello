@@ -6,12 +6,18 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="./css/style.css">
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     </head>
     <body>
         <div id="app">
-            <h1>{{text}}</h1>
+            <h1>Ciao {{text}}!</h1>
+            <img :src=imgsrc @click="imgRotate" >
+            <div>
+                <label for="modh1">Cambiate il titolo qui:</label>
+                <input id="modh1" type="text" v-model="text">
+            </div>
+            
         </div>
 
         <script>
@@ -20,7 +26,13 @@
             createApp({
                 data(){
                     return{
-                        text: 'Ciao Mondo!'
+                        text: '',
+                        imgsrc: 'https://www.akamai.com/site/im-demo/perceptual-standard.jpg?imbypass=true',
+                    }
+                },
+                methods:{
+                    imgRotate: function(){
+                        document.querySelector('img').classList.add("rotateImg")
                     }
                 }
             }).mount('#app')
